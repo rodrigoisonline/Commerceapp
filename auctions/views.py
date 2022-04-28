@@ -10,6 +10,28 @@ from .models import User, Auction, Bid, Category, Comment, PersonalWatchlist, Pe
 from .forms import AuctionForm
 
 
+def darktheme(request):
+    auctions = Auction.objects.all().order_by('id').reverse()
+    persons = Person.objects.all()
+    user = request.user 
+    if user.id is None:
+        context = {
+            'auctions': auctions,
+            'persons': persons,
+        }
+        return render(request, "auctions/darktheme.html", context)
+    my_watchlist = PersonalWatchlist.objects.get(user=request.user)
+    totalAuctions = my_watchlist.auctions.count()
+    context = {
+        'auctions': auctions,
+        'totalAuctions': totalAuctions,
+        'my_watchlist': my_watchlist,
+        'persons': persons,
+    }
+    return render(request, "auctions/darktheme.html", context)
+
+
+
 def index(request):
     auctions = Auction.objects.all().order_by('id').reverse()
     persons = Person.objects.all()

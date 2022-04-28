@@ -25,11 +25,19 @@ class Auction(models.Model):
     image = models.ImageField(upload_to='images', blank=True, null=True)
     closed = models.BooleanField(default=False)
     
+    
     def datepublished(self):
         return self.date.strftime('%B %d %Y')
 
     def __str__(self):
         return self.title
+
+class Card(models.Model):
+   flag = models.CharField(max_length=60)
+   
+   def __str__(self):
+        return self.flag
+    #category = models.ManyToManyField('Category', blank=True, null=True)
 
 class Person(models.Model):
     person = models.CharField(max_length=60)

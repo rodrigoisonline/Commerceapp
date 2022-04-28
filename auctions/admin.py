@@ -10,3 +10,4 @@ admin.site.register(PersonalWatchlist)
 admin.site.register(Person)
 
 
+

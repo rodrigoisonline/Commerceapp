@@ -17,9 +17,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet"> </head>
 
-<body style="background-color: white;">
+<body style="background-image: url('https://cdn.emalm.com/image/4cbmp/4cbmp_p0.webp')">
 
-    <nav class="navbar navbar-expand-md navbar-light nav-top" style="background-image: url('https://cdn.emalm.com/image/5rwLL/5rwLL_p0.webp')">
+    <nav class="navbar navbar-expand-md navbar-light nav-top" style="background-image: url('https://cdn.emalm.com/image/4cbmp/4cbmp_p0.webp')">
 
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
             <ul class="navbar-nav mr-auto"> {% if user.is_authenticated %}
@@ -42,7 +42,7 @@
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="top: 30px;margin-right: 0px;padding-right: 0px;left: -150px;"> 
                             <a class="dropdown-item" href="{% url 'login' %}">Login</a> 
                             <a class="dropdown-item" href="{% url 'register' %}">Register</a>
-                            
+                            <a class="dropdown-item" href="{% url 'index' %}">White Theme</a> </div> 
                     </div>
                     </form>
         </div>
@@ -55,7 +55,7 @@
                 <li class="nav-item dropdown"> <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           {{person}}
                         </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown"><p style="font-weight: 5;">under construction</p>{% for category in person.category.all %} <a class="dropdown-item" href="{% url 'category' category=category.name person=person.person %}">{{category}}</a> {% endfor %} </div>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown"> {% for category in person.category.all %} <a class="dropdown-item" href="{% url 'category' category=category.name person=person.person %}">{{category}}</a> {% endfor %} </div>
                 </li> {% endfor %} </ul>
         </div>
     </nav> {% endif %}
